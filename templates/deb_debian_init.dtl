@@ -11,4 +11,5 @@
 # Short-Description:    {{ package_shortdesc }}
 ### END INIT INFO
 
-/usr/bin/sudo -u {{ package_install_user }} VMARGS_PATH=/etc/{{ package_name }}/vm.args RELX_CONFIG_PATH=/etc/{{ package_name }}/{{ package_name }}.config -i /usr/lib/{{ package_name }}/bin/{{ app }} $@
+# /usr/bin/sudo -u {{ package_install_user }} VMARGS_PATH=/etc/{{ package_name }}/vm.args RELX_CONFIG_PATH=/etc/{{ package_name }}/{{ package_name }}.config -i /usr/lib/{{ package_name }}/bin/{{ app }} $@
+/sbin/runuser -l {{ package_install_user }} -c "VMARGS_PATH=/etc/{{ package_install_user }}/vm.args RELX_CONFIG_PATH=/etc/{{ package_install_user }}/{{ package_install_user }}.config /usr/lib/{{ package_install_user }}/bin/{{ app }} $@"
